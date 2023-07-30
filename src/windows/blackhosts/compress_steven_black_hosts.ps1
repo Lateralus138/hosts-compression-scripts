@@ -1,4 +1,4 @@
-Write-Host("Compiling hosts file content.")
+Write-Host("Compiling Steven Black's hosts file content.")
 $content = @(Get-Content 'C:\Windows\System32\drivers\etc\hosts')
 $Break = $False
 $content_header = $($content |  Foreach-Object { if ($Break -eq $False) {$_}; if ($_ -eq '# http://stevenblack.com') {$Break = $True} })
@@ -14,6 +14,7 @@ $urls = @(
 		Select-String -Pattern '(\s+0.0.0.0)' -NotMatch  |
 		ForEach-Object { ($_ -split '\s')[1] }
 	 )
+$urls_count = $urls.Count
 $urllines = @("`n")
 Write-Host("Attempting to compress hosts file urls.")
 while ($urls.length -gt 1)
@@ -21,10 +22,19 @@ while ($urls.length -gt 1)
 	$one, $two, $three, $four, $five, $six, $seven, $eight, $nine, $rest = $urls
 	$urllines += "0.0.0.0 $one $two $three $four $five $six $seven $eight $nine"
 	$urls = @($rest)
-	Write-Host -NoNewLine $("`r`e[s[" + $urls.length + "] urls left to compress.`e[u")
+	Write-Host -NoNewLine $("`r`e[s[" + $urls.Count + "] urls left to compress.`e[u")
 }
 $urllines += "`n"
+if ( ($urls_count % 9) -eq 0 )
+{
+  $result = $urls_count / 9
+}
+else 
+{
+  $result = [math]::truncate($urls_count / 9) + 1
+}
 Write-Host("Hosts file urls finished compressing.")
+Write-Host("Compressed [" + $urls_count + "] urls into [" + $result + "] lines.")
 $content_header
 $urllines
 $content_footer
