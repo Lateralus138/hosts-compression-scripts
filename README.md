@@ -56,12 +56,16 @@ Please bear with me as this is a lot of work and I am a busy man, but in my opin
 
   - [ ] Scripts
     - [ ] Windows
-      - [x] Create PowerShell script
-      - [ ] Create CMD script
-      - [ ] Create AutoHotkey script/compiled executable
+      - [x] Create PowerShell script - Steven Black's
+      - [ ] Create PowerShell script - Generic
+      - [ ] Create CMD script - Steven Black's
+      - [ ] Create CMD script - Generic
+      - [ ] Create AutoHotkey script/compiled executable for both.
     - [ ] Linux
-      - [ ] Create Bash script 
-      - [ ] Create Posix shell script
+      - [ ] Create Bash script - Steven Black's
+      - [ ] Create Bash script - Generic
+      - [ ] Create POSIX shell script - Steven Black's
+      - [ ] Create POSIX shell script - Generic
     - [ ] MacOS
       - [ ] Probably not, we'll see
     - [ ] Cross Platform
