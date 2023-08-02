@@ -15,6 +15,7 @@
   - [Guides And Examples](#guides-and-examples)
     - [Compressing Windows](#compressing-windows)
       - [PowerShell Compression - Steven Black's](#powershell-compression---steven-blacks)
+    - [Replacing Windows Hosts File](#replacing-windows-hosts-file)
   - [Notes](#notes)
     - [Note 1](#note-1)
     - [Note 2](#note-2)
@@ -114,9 +115,26 @@ This assumes you have already installed a custom hosts file from Mr. Black's rep
 ![RunPowerShell](docs/images/pshell_run.png)
 ![CMDPowerShell](docs/images/pshell_cmd.png)
 
-3. 
+3. Change directory to the location of the PS1 script you downloaded from here; you don't have to, but if you don't you must provide the path to the full script (for example C:\Path\To\ScriptLocation\script.ps1). For example:
+```PowerShell
+ PS> cd C:\Users\<USERNAME>\Downloads
+```
+4. It's possible that executing PowerShell scripts is disabled by default on your Windows machine. If so then enable it. You'll need to run this next command as Administrator in an Administrative PowerShell instance:
+      - You can either Right Click->Run as administrator from the Start Menu or use the hotkey ```Win+x``` and either press 'a' or click the options from the menu.
+    ![WINX](docs/images/winx.png)
+      - From the administrative PowerShell instance type `Set-ExecutionPolicy unrestricted` and hit [Enter].
+      ```Powershell
+       PS> Set-ExecutionPolicy unrestricted
+      ```
+5. If you only want to see the compressed results from the command line then (from the directory of the script, unless you want to type the full path) type `.\compress_steven_black_hosts.ps1` and it will somewhat verbosely run through the process of compression and output the results to the screen.
+```
+ PS> .\compress_steven_black_hosts.ps1
+```
+6. To actually output the compressed results to a file run the same command, but redirect the output to a file: `compress_steven_black_hosts.ps1 > hosts`. You can use `Set-Content`, but that's more than is necessary. I do not recommend overwriting the original file (as this is harder to do and I provide a more reliable method below in [Replacing Windows hosts file](#replacing-windows-hosts-file)).
 
-<!-- ### Compressing Linux -->
+### Replacing Windows Hosts File
+
+
 
 ## Notes
 
