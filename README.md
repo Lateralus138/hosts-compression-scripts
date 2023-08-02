@@ -121,6 +121,7 @@ This assumes you have already installed a custom hosts file from Mr. Black's rep
 ```
 4. It's possible that executing PowerShell scripts is disabled by default on your Windows machine. If so then enable it. You'll need to run this next command as Administrator in an Administrative PowerShell instance:
       - You can either Right Click->Run as administrator from the Start Menu or use the hotkey ```Win+x``` and either press 'a' or click the options from the menu.
+    
     ![WINX](docs/images/winx.png)
       - From the administrative PowerShell instance type `Set-ExecutionPolicy unrestricted` and hit [Enter].
       ```Powershell
