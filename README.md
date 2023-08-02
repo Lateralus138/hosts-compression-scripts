@@ -13,16 +13,14 @@
   - [TODO](#todo)
   - [Usage](#usage)
   - [Guides And Examples](#guides-and-examples)
-    - [Compressing The Hosts File](#compressing-the-hosts-file)
-      - [Compressing Windows](#compressing-windows)
-      - [Compressing Linux](#compressing-linux)
+    - [Compressing Windows](#compressing-windows)
+      - [PowerShell Compression - Steven Black's](#powershell-compression---steven-blacks)
   - [Notes](#notes)
     - [Note 1](#note-1)
     - [Note 2](#note-2)
     - [Note 3](#note-3)
   - [Contribute](#contribute)
   - [LICENSE](#license)
-
 
 ---
 
@@ -34,9 +32,9 @@ Scripts to compress the hosts file in various operating systems.
 
 ### Description
 
- Here you will find *scripts* I've written (eventually programs) to help compress the hosts file found in various operating systems.
+ Here you will find *scripts* I've written (eventually programs) to help compress the hosts file found in various operating systems. The very first script provided here is a PowerShell script specifically for the hosts files found at [Steven Black's repository](https://github.com/StevenBlack/hosts), but I will add more gradually.
 
- The *hosts*<sup>[[1](#note-1)]</sup> file is a text file in all (that I know of) operating systems that maps hostnames[[2](#note-2)]</sup> (google.com for example) to ip addresses[[3](#note-3)]</sup> (0.0.0.0 or 127.0.0.1 for examples) and they can become very large if you use a custom one (especially a consolidated one such as one of [Steven Black's](https://github.com/StevenBlack/hosts)). In *Linux* the file's size is not much of an issue, but in Windows (especially) this can slow down DNS caching and therefore cause internet/application issues such as slowing down the internet/external network or even bringing the internet to a halt. A way to circumvent this issue is to *compress* (or aggregate) multiple addresses into single lines (or disable the DNS Client, which I definitely do not recommend for various reasons (and especially if you use WSL)). Windows can handle 9 hostnames per line; for example:
+ The *hosts*<sup>[[1](#note-1)]</sup> file is a text file in all (that I know of) operating systems that maps hostnames[[2](#note-2)]</sup> (google.com for example) to ip addresses[[3](#note-3)]</sup> (0.0.0.0 or 127.0.0.1 for examples) and they can become very large if you use a custom one (especially a consolidated one such as one of [Steven Black's](https://github.com/StevenBlack/hosts)). In *Linux* the file's size is not much of an issue, but in Windows (especially) this can slow down DNS caching and therefore cause internet/application issues such as slowing down the internet/external network or even bringing the internet to a halt. A way to circumvent this issue is to *compress* (or aggregate) multiple host names into single lines (or disable the DNS Client, which I definitely do not recommend for various reasons (and especially if you use WSL)). Windows can handle 9 hostnames per line; for example:
 
  ```
  0.0.0.0 fakename_1.url fakename_2.url fakename_3.url fakename_4.url fakename_5.url fakename_6.url fakename_7.url fakename_8.url fakename_9.url
@@ -76,41 +74,45 @@ Please bear with me as this is a lot of work and I am a busy man, but in my opin
 
 For now these are all command line tools, whether they be a script or binary executable. No immediate plans for GUIs, but that make eventually change.
 
-The main focus for now is Windows and Linux, but as stated in the [Motivation](#motivation) section the whole reasons I started this is for the shipwreck that is the Windows environment. I love Windows and Linux, but deny there are some
+The main focus for now is Windows and Linux, but as stated in the [Motivation](#motivation) section the whole reasons I started this is for the shipwreck that is the Windows environment. I love Windows and Linux, but to deny there are some issues in Windows (in both really, but most notably Windows) is folly.
 
 ## Guides And Examples
 
 Here you will find guides for Windows and Linux as these are my primary environments for which I have the most knowledge. If you care to contribute a MacOS or any other script and/or other guides (or anything else) please feel free to [fork](https://github.com/Lateralus138/hosts-compression-scripts/fork) and make a *pull request*.
 
-<!-- ### Editing A Hosts File
+I'll not give specific instructions on editing or installing the hosts file, if you need to compress yours you're probably already passed that point, but, of course, you can look it up yourself and here's a starting point if you like via *DuckDuckGo*:
 
-#### Editing Windows
+[How to edit the hosts file @ DDG](https://duckduckgo.com/?q=How+to+edit+the+hosts+file&ia=web)
 
-#### Editing Linux
+More will be added as I write more scripts. These guide assume you have already replaced or altered your hosts file. These scripts do not edit the file in place (for now) and only prints the output to the console by default.
 
-### Installing A Custom Hosts File
+### Compressing Windows
 
-#### Installing Windows
+The Windows hosts file located at ```C:\Windows\System32\drivers\etc\hosts```
 
-#### Installing Linux -->
+#### PowerShell Compression - Steven Black's
 
-### Compressing The Hosts File
-
-#### Compressing Windows
-
-#### Compressing Linux
+<!-- ### Compressing Linux -->
 
 ## Notes
 
 ### Note 1
 
+[What is the hosts file @ DDG](https://duckduckgo.com/?q=what+is+the+hosts+file&t=h_&ia=web)
+
 ### Note 2
+
+What is a hostname
+
+[What is a hostname @ DDG](https://duckduckgo.com/?q=What+is+a+hostname&t=h_&ia=web)
 
 ### Note 3
 
+[What is an IP address @ DDG](https://duckduckgo.com/?q=What+is+an+IP+address&t=h_&ia=web)
+
 ## Contribute
 
-Please feel free to contribute by forking and making a *pull request*.
+Please feel free to contribute by `forking and making a *pull request*.
 
 [![FORKTHIS](docs/images/fork_this_button_small.png)](https://github.com/Lateralus138/hosts-compression-scripts/fork)
 
