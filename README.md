@@ -84,7 +84,17 @@ The main focus for now is Windows and Linux, but as stated in the [Motivation](#
 
 Here you will find guides for Windows and Linux as these are my primary environments for which I have the most knowledge. If you care to contribute a MacOS or any other script and/or other guides (or anything else) please feel free to [fork](https://github.com/Lateralus138/hosts-compression-scripts/fork) and make a *pull request*.
 
-I'll not give specific instructions on editing or installing the hosts file, if you need to compress yours you're probably already passed that point, but, of course, you can look it up yourself and here's a starting point if you like via *DuckDuckGo*:
+These guides are not for use with the PiHole or adblockers, they are specifically for hosts found in the default directories such as:
+
+Windows:
+
+```C:\Windows\System32\drivers\etc\hosts```
+
+and Linux:
+
+```/etc/hosts```
+
+I'll not give specific instructions on editing or installing the hosts file, if you need to compress yours you've probably already passed that point, but, of course, you can look it up yourself and here's a starting point if you like via *DuckDuckGo*:
 
 [How to edit the hosts file @ DDG](https://duckduckgo.com/?q=How+to+edit+the+hosts+file&ia=web)
 
@@ -95,6 +105,16 @@ More will be added as I write more scripts. These guide assume you have already 
 The Windows hosts file located at ```C:\Windows\System32\drivers\etc\hosts```
 
 #### PowerShell Compression - Steven Black's
+
+This assumes you have already installed a custom hosts file from Mr. Black's repository and it is located in the appropriate directory as stated above.
+
+1. Download ```compress_steven_black_hosts.ps1``` from the current [Releases Page](https://github.com/Lateralus138/hosts-compression-scripts/releases) or directly from [src\windows\blackhosts\compress_steven_black_hosts.ps1](src\windows\blackhosts\compress_steven_black_hosts.ps1) and place anywhere you like. 
+2. Open a PowerShell terminal from the Start Menu, Run (Win+r), or from CMD (powershell or pwsh).
+![StartMenuPowerShell](docs/images/pshell_start_menu.png)
+![RunPowerShell](docs/images/pshell_run.png)
+![CMDPowerShell](docs/images/pshell_cmd.png)
+
+3. 
 
 <!-- ### Compressing Linux -->
 
