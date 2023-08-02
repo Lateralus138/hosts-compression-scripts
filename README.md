@@ -132,6 +132,11 @@ This assumes you have already installed a custom hosts file from Mr. Black's rep
  PS> .\compress_steven_black_hosts.ps1
 ```
 6. To actually output the compressed results to a file run the same command, but redirect the output to a file: `compress_steven_black_hosts.ps1 > hosts`. You can use `Set-Content`, but that's more than is necessary. I do not recommend overwriting the original file (as this is harder to do and I provide a more reliable method below in [Replacing Windows hosts file](#replacing-windows-hosts-file)).
+```
+ PS> .\compress_steven_black_hosts.ps1 > hosts
+```
+
+You will now have a new compressed version of Steven Black's hosts file. All of the original content of the file will be there, but reordered. As some of the comments (#[Added]... for example) were mixed in with the original urls they will now be placed at the bottom and make no sense. The other text (header and footer) in the original file will still be in their appropriate places.
 
 ### Replacing Windows Hosts File
 
