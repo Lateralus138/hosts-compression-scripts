@@ -148,20 +148,21 @@ As stated above the Windows hosts file is located at `C:\Windows\System32\driver
 
 1. [Optional] Backup your original hosts file.
 2. [Possibly Optional] If the file is set to read only (not usually, but mine is and I know some security software has been known to set the hosts file to read only) then you must set the file to writable. To do so right click on the hosts file and choose 'Properties' (newer versions of Windows it might be Right Click->Show More Options->Properties) or simply by pressing [Alt+Enter] while the file is selected and then uncheck the 'Read Only' check box at the bottom of the 'General' tab ad press [Apply]:
+
 ![RO1](docs/images/ro1.png)
 ![RO2](docs/images/ro2.png)
 ![RO3](docs/images/ro3.png)
-3. [Possibly Optional] Often your hosts file is in use (by *svchost.exe*) and if you try to replace or delete the file it won't let you. The best option is to use an unlocker program to unlock and delete the file. If you attempt to only unlock the file and then try to delete it manually it more than likely will be locked again so it's best to use the 'Unlock and Delete' option. I highly recommend [IOBit's Unlocker](https://www.iobit.com/en/iobit-unlocker.php) which is a completely free application and I have used it for years WITHOUT FAIL, but, of course, you can search for your own as there are several options (here's a head start if you like: [file unlocker programs @ DDG](https://duckduckgo.com/?q=file+unlocker+programs&ia=web)). With IObit unlocker you would right click on the hosts file (and possibly "Show More Options") and choose the 'IOBit Unlocker' option and when the program starts select "Unlock & Delete".
+1. [Possibly Optional] Often your hosts file is in use (by *svchost.exe*) and if you try to replace or delete the file it won't let you. The best option is to use an unlocker program to unlock and delete the file. If you attempt to only unlock the file and then try to delete it manually it more than likely will be locked again so it's best to use the 'Unlock and Delete' option. I highly recommend [IOBit's Unlocker](https://www.iobit.com/en/iobit-unlocker.php) which is a completely free application and I have used it for years WITHOUT FAIL, but, of course, you can search for your own as there are several options (here's a head start if you like: [file unlocker programs @ DDG](https://duckduckgo.com/?q=file+unlocker+programs&ia=web)). With IObit unlocker you would right click on the hosts file (and possibly "Show More Options") and choose the 'IOBit Unlocker' option and when the program starts select "Unlock & Delete".
 ![unlocker_option](docs/images/unlocker_option.png)
 ![unlocker](docs/images/unlocker.png)
 
-4. Flush the DNS. This is the only option that must be done from the command line and can be done in CMD or PowerShell. It's best to do this option before replacing the hosts file with the new one as when you place the new hosts file it might be in use and flushing won't be possible while it's in use. Start your terminal up and run the following command and press [Enter]:
+1. Flush the DNS. This is the only option that must be done from the command line and can be done in CMD or PowerShell. It's best to do this option before replacing the hosts file with the new one as when you place the new hosts file it might be in use and flushing won't be possible while it's in use. Start your terminal up and run the following command and press [Enter]:
 ```PowerShell
 PS> ipconfig /flushdns
 ```
 
-5. Copy and paste the new *hosts* file to the `etc` directory where you just deleted the original file.
-6. [Somewhat Optional] Reboot your system. You can wait to do this, but it's possible that not all services and applications that utilize the hosts file/DNS caching will utilize the new changes until reboot.
+1. Copy and paste the new *hosts* file to the `etc` directory where you just deleted the original file.
+2. [Somewhat Optional] Reboot your system. You can wait to do this, but it's possible that not all services and applications that utilize the hosts file/DNS caching will utilize the new changes until reboot.
 
 ## Notes
 
