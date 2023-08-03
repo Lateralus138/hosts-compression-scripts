@@ -17,8 +17,8 @@ env:
   VS_EPOCH:
   VS_FULL:
   RELEASE_TITLE: "Hosts Compression Scripts"
-  RELEASE_FILE: "./docs/md/pre-release.md"
-  PRERELEASE: True
+  RELEASE_FILE: "./docs/md/release.md"
+  PRERELEASE: False
 jobs:
   build_windows:
     name: Release
