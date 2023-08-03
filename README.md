@@ -16,6 +16,11 @@
     - [Compressing Windows](#compressing-windows)
       - [PowerShell Compression - Steven Black's](#powershell-compression---steven-blacks)
     - [Replacing Windows Hosts File](#replacing-windows-hosts-file)
+  - [Project Information](#project-information)
+    - [Source File Quality](#source-file-quality)
+    - [File MD5 Hashes](#file-md5-hashes)
+    - [Current Windows Black Hosts PowerShell Script](#current-windows-black-hosts-powershell-script)
+    - [Other Miscellaneous File Information](#other-miscellaneous-file-information)
   - [Notes](#notes)
     - [Note 1](#note-1)
     - [Note 2](#note-2)
@@ -152,17 +157,50 @@ As stated above the Windows hosts file is located at `C:\Windows\System32\driver
 ![RO1](docs/images/ro1.png)
 ![RO2](docs/images/ro2.png)
 ![RO3](docs/images/ro3.png)
-1. [Possibly Optional] Often your hosts file is in use (by *svchost.exe*) and if you try to replace or delete the file it won't let you. The best option is to use an unlocker program to unlock and delete the file. If you attempt to only unlock the file and then try to delete it manually it more than likely will be locked again so it's best to use the 'Unlock and Delete' option. I highly recommend [IOBit's Unlocker](https://www.iobit.com/en/iobit-unlocker.php) which is a completely free application and I have used it for years WITHOUT FAIL, but, of course, you can search for your own as there are several options (here's a head start if you like: [file unlocker programs @ DDG](https://duckduckgo.com/?q=file+unlocker+programs&ia=web)). With IObit unlocker you would right click on the hosts file (and possibly "Show More Options") and choose the 'IOBit Unlocker' option and when the program starts select "Unlock & Delete".
+3. [Possibly Optional] Often your hosts file is in use (by *svchost.exe*) and if you try to replace or delete the file it won't let you. The best option is to use an unlocker program to unlock and delete the file. If you attempt to only unlock the file and then try to delete it manually it more than likely will be locked again so it's best to use the 'Unlock and Delete' option. I highly recommend [IOBit's Unlocker](https://www.iobit.com/en/iobit-unlocker.php) which is a completely free application and I have used it for years WITHOUT FAIL, but, of course, you can search for your own as there are several options (here's a head start if you like: [file unlocker programs @ DDG](https://duckduckgo.com/?q=file+unlocker+programs&ia=web)). With IObit unlocker you would right click on the hosts file (and possibly "Show More Options") and choose the 'IOBit Unlocker' option and when the program starts select "Unlock & Delete".
 ![unlocker_option](docs/images/unlocker_option.png)
 ![unlocker](docs/images/unlocker.png)
 
-1. Flush the DNS. This is the only option that must be done from the command line and can be done in CMD or PowerShell. It's best to do this option before replacing the hosts file with the new one as when you place the new hosts file it might be in use and flushing won't be possible while it's in use. Start your terminal up and run the following command and press [Enter]:
+4. Flush the DNS. This is the only option that must be done from the command line and can be done in CMD or PowerShell. It's best to do this option before replacing the hosts file with the new one as when you place the new hosts file it might be in use and flushing won't be possible while it's in use. Start your terminal up and run the following command and press [Enter]:
 ```PowerShell
 PS> ipconfig /flushdns
 ```
 
-1. Copy and paste the new *hosts* file to the `etc` directory where you just deleted the original file.
-2. [Somewhat Optional] Reboot your system. You can wait to do this, but it's possible that not all services and applications that utilize the hosts file/DNS caching will utilize the new changes until reboot.
+5. Copy and paste the new *hosts* file to the `etc` directory where you just deleted the original file.
+6. [Somewhat Optional] Reboot your system. You can wait to do this, but it's possible that not all services and applications that utilize the hosts file/DNS caching will utilize the new changes until reboot.
+
+## Project Information
+
+<!-- &#x54;&#x68;&#x69;&#x73;&#x20;&#x70;&#x72;&#x6f;&#x6a;&#x65;&#x63;&#x74;&#x20;&#x69;&#x73;&#x20;&#x77;&#x72;&#x69;&#x74;&#x74;&#x65;&#x6e;&#x20;&#x69;&#x6e;&#x20;`C++`.
+
+[![C++](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Lateralus138/hosts-compression-scripts/master/docs/json/cpp.json&logo=data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC%2FxhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABcVBMVEUAAAAAgM0Af8wolNQAa7YAbbkAQIcAQIYAVJ0AgM0AgM0AgM0AgM0AgM0AgM0AgM0AgM0AgM0AgM0Af8wAfswAfswAf8wAgM0AgM0AgM0Af80AgM0AgM0AgM0AgM0Af8wAgM0Af80djtIIg84Af8wAfsxYrN4Fg84Gg85RqNwej9MLhM8LhM8AfcsAgM0Hg88AfsshkNNTqd1%2Fv%2BUXi9AHdsAAYKoAY64ih8kAf81YkcEFV54GV55Sj8EnlNULhc8AecYdebwKcrsAe8gAb7oAXacAXqgAcLwAImUAUpoAVJ0AUpwAUZoAIWMAVJ0AVJ0AUpwAUZwAVJ0AVJ0AVJ0AVJ0AgM0cjtJqteGczetqtOEAf807ndjL5fT9%2Fv7%2F%2F%2F%2FM5fQ9ntnu9vu12vCi0Oz%2F%2F%2F6Hw%2Bebzeufz%2Bx%2Bv%2BW12e%2Bgz%2BxqteLu9fmRx%2BjL3Ovu8%2Fi1zeKrzeUAUpw7e7M8fLQAU50cZ6hqm8WcvNgAVJ3xWY3ZAAAAVnRSTlMAAAAAAAAAAAAREApTvrxRCQQ9rfX0qwErleyUKjncOFv%2B%2Fv5b%2Ff7%2B%2Fv7%2B%2Fv1b%2Ff7%2B%2Fv7%2BW%2F7%2B%2Fv79%2Fv7%2B%2Fv7%2B%2Fv7%2B%2Fjfa2jcBKJHqKAEEO6r0CVC8EFaOox4AAAABYktHRF9z0VEtAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH5QYKDQws%2FBWF6QAAAONJREFUGNNjYAABRkZOLkZGBhhgZOTm4eXjF4AJMQoKCYuEhYmKCQmCRBjFJSSlwiMiI6PCpaRlxBkZGGXlomNi4%2BLj4xISo%2BXkgQIKikqx8UnJyUnxKcqKKiAB1ajUJDV1Dc00LW0dXSaggF56fLK%2BgYFhhlGmsQkzRCDL1MzcIhsmYJkTn2tlbWObZ2cP0sKk4OCYH19QWFgQX%2BTkrMLEwOLiWlySD7I2v7TMzZ2Vgc3D08u7vKKysqLc28vHlx3oVg4%2F%2F4DAqqrAAH8%2FDohnODiCgkNCgoM4OOD%2B5eAIDYVyAZ9mMF8DmkLwAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDIxLTA2LTEwVDE4OjEyOjQ0LTA1OjAwkjvGQgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMS0wNi0xMFQxODoxMjo0NC0wNTowMONmfv4AAAAASUVORK5CYII%3D)](http://www.cplusplus.org/) -->
+
+### Source File Quality
+
+&#x54;&#x68;&#x69;&#x73;&#x20;&#x69;&#x73;&#x20;&#x67;&#x72;&#x61;&#x64;&#x65;&#x64;&#x20;&#x62;&#x79;&#x20;&#x43;&#x6f;&#x64;&#x65;&#x46;&#x61;&#x63;&#x74;&#x6f;&#x72;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x69;&#x73;&#x20;&#x73;&#x75;&#x62;&#x6a;&#x65;&#x63;&#x74;&#x69;&#x76;&#x65;&#x2c;&#x20;&#x62;&#x75;&#x74;&#x20;&#x68;&#x65;&#x6c;&#x70;&#x73;&#x20;&#x6d;&#x65;&#x20;&#x74;&#x6f;&#x20;&#x72;&#x65;&#x66;&#x61;&#x63;&#x74;&#x6f;&#x72;&#x20;&#x6d;&#x79;&#x20;&#x77;&#x6f;&#x72;&#x6b;&#x2e;
+
+|Name|Status|
+|:---:|:---:|
+|[codefactor.io](https://www.codefactor.io/repository/github/lateralus138/hosts-compression-scripts)|![](https://img.shields.io/codefactor/grade/github/Lateralus138/hosts-compression-scripts/master?style=for-the-badge&labelColor=1D1D1D&color=ffff99)|
+
+### File MD5 Hashes
+
+&#x41;&#x6c;&#x6c;&#x20;&#x68;&#x61;&#x73;&#x68;&#x65;&#x73;&#x20;&#x61;&#x72;&#x65;&#x20;&#x72;&#x65;&#x74;&#x72;&#x69;&#x65;&#x76;&#x65;&#x64;&#x20;&#x61;&#x74;&#x20;&#x63;&#x6f;&#x6d;&#x70;&#x69;&#x6c;&#x65;&#x2f;&#x62;&#x75;&#x69;&#x6c;&#x64;&#x20;&#x74;&#x69;&#x6d;&#x65;&#x2e;
+
+### Current Windows Black Hosts PowerShell Script
+
+![WINDOWS Black Hosts PowerShell Script MD5](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Lateralus138/hosts-compression-scripts/master/docs/json/compress_steven_black_hosts_x86_md5.jso)
+
+
+### Other Miscellaneous File Information
+
+|Description|Status|
+|:---:|:---:|
+|Project Release Date|![GitHub Release Date](https://img.shields.io/github/release-date/Lateralus138/hosts-compression-scripts?style=for-the-badge&labelColor=1D1D1D&color=ffff99)|
+|Total downloads for this project|![GitHub all releases](https://img.shields.io/github/downloads/Lateralus138/hosts-compression-scripts/total?style=for-the-badge&labelColor=1D1D1D&color=ffff99)|
+|Complete repository size|![This Repo Size](https://img.shields.io/github/repo-size/Lateralus138/hosts-compression-scripts?style=for-the-badge&labelColor=1D1D1D&color=ffff99)|
+|Commits in last month|![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Lateralus138/hosts-compression-scripts?style=for-the-badge&labelColor=1D1D1D&color=ffff99)|
+|Commits in last year|![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Lateralus138/hosts-compression-scripts?style=for-the-badge&labelColor=1D1D1D&color=ffff99)|
 
 ## Notes
 
