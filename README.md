@@ -158,6 +158,7 @@ As stated above the Windows hosts file is located at `C:\Windows\System32\driver
 ![RO2](docs/images/ro2.png)
 ![RO3](docs/images/ro3.png)
 3. [Possibly Optional] Often your hosts file is in use (by *svchost.exe*) and if you try to replace or delete the file it won't let you. The best option is to use an unlocker program to unlock and delete the file. If you attempt to only unlock the file and then try to delete it manually it more than likely will be locked again so it's best to use the 'Unlock and Delete' option. I highly recommend [IOBit's Unlocker](https://www.iobit.com/en/iobit-unlocker.php) which is a completely free application and I have used it for years WITHOUT FAIL, but, of course, you can search for your own as there are several options (here's a head start if you like: [file unlocker programs @ DDG](https://duckduckgo.com/?q=file+unlocker+programs&ia=web)). With IObit unlocker you would right click on the hosts file (and possibly "Show More Options") and choose the 'IOBit Unlocker' option and when the program starts select "Unlock & Delete".
+
 ![unlocker_option](docs/images/unlocker_option.png)
 ![unlocker](docs/images/unlocker.png)
 
