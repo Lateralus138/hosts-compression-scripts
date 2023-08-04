@@ -136,9 +136,10 @@ This assumes you have already installed a custom hosts file from Mr. Black's rep
 ```
  PS> .\compress_steven_black_hosts.ps1
 ```
-6. To actually output the compressed results to a file run the same command, but redirect the output to a file: `compress_steven_black_hosts.ps1 > hosts`. You can use `Set-Content`, but that's more than is necessary. I do not recommend overwriting the original file (as this is harder to do and I provide a more reliable method below in [Replacing Windows hosts file](#replacing-windows-hosts-file)).
+
+6. To actually output the compressed results to a file run the same command, but redirect the output to a file: `compress_steven_black_hosts.ps1 -File hosts`. I do not recommend overwriting the original file (as this is harder to do and I provide a more reliable method below in [Replacing Windows hosts file](#replacing-windows-hosts-file)).
 ```
- PS> .\compress_steven_black_hosts.ps1 > hosts
+ PS> .\compress_steven_black_hosts.ps1 -File hosts
 ```
 
 You will now have a new compressed version of Steven Black's hosts file. All of the original content of the file will be there, but reordered. As some of the comments (#[Added]... for example) were mixed in with the original urls they will now be placed at the bottom and make no sense. The other text (header and footer) in the original file will still be in their appropriate places.
@@ -181,9 +182,9 @@ PS> ipconfig /flushdns
 
 &#x54;&#x68;&#x69;&#x73;&#x20;&#x69;&#x73;&#x20;&#x67;&#x72;&#x61;&#x64;&#x65;&#x64;&#x20;&#x62;&#x79;&#x20;&#x43;&#x6f;&#x64;&#x65;&#x46;&#x61;&#x63;&#x74;&#x6f;&#x72;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x69;&#x73;&#x20;&#x73;&#x75;&#x62;&#x6a;&#x65;&#x63;&#x74;&#x69;&#x76;&#x65;&#x2c;&#x20;&#x62;&#x75;&#x74;&#x20;&#x68;&#x65;&#x6c;&#x70;&#x73;&#x20;&#x6d;&#x65;&#x20;&#x74;&#x6f;&#x20;&#x72;&#x65;&#x66;&#x61;&#x63;&#x74;&#x6f;&#x72;&#x20;&#x6d;&#x79;&#x20;&#x77;&#x6f;&#x72;&#x6b;&#x2e;
 
-|Name|Status|
-|:---:|:---:|
-|[codefactor.io](https://www.codefactor.io/repository/github/lateralus138/hosts-compression-scripts)|![](https://img.shields.io/codefactor/grade/github/Lateralus138/hosts-compression-scripts/master?style=for-the-badge&labelColor=1D1D1D&color=ffff99)|
+|                                                Name                                                 |                                                                        Status                                                                        |
+| :-------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------: |
+| [codefactor.io](https://www.codefactor.io/repository/github/lateralus138/hosts-compression-scripts) | ![](https://img.shields.io/codefactor/grade/github/Lateralus138/hosts-compression-scripts/master?style=for-the-badge&labelColor=1D1D1D&color=ffff99) |
 
 ### File MD5 Hashes
 
@@ -196,13 +197,13 @@ PS> ipconfig /flushdns
 
 ### Other Miscellaneous File Information
 
-|Description|Status|
-|:---:|:---:|
-|Project Release Date|![GitHub Release Date](https://img.shields.io/github/release-date/Lateralus138/hosts-compression-scripts?style=for-the-badge&labelColor=1D1D1D&color=ffff99)|
-|Total downloads for this project|![GitHub all releases](https://img.shields.io/github/downloads/Lateralus138/hosts-compression-scripts/total?style=for-the-badge&labelColor=1D1D1D&color=ffff99)|
-|Complete repository size|![This Repo Size](https://img.shields.io/github/repo-size/Lateralus138/hosts-compression-scripts?style=for-the-badge&labelColor=1D1D1D&color=ffff99)|
-|Commits in last month|![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Lateralus138/hosts-compression-scripts?style=for-the-badge&labelColor=1D1D1D&color=ffff99)|
-|Commits in last year|![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Lateralus138/hosts-compression-scripts?style=for-the-badge&labelColor=1D1D1D&color=ffff99)|
+|           Description            |                                                                                Status                                                                                |
+| :------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|       Project Release Date       |     ![GitHub Release Date](https://img.shields.io/github/release-date/Lateralus138/hosts-compression-scripts?style=for-the-badge&labelColor=1D1D1D&color=ffff99)     |
+| Total downloads for this project |   ![GitHub all releases](https://img.shields.io/github/downloads/Lateralus138/hosts-compression-scripts/total?style=for-the-badge&labelColor=1D1D1D&color=ffff99)    |
+|     Complete repository size     |         ![This Repo Size](https://img.shields.io/github/repo-size/Lateralus138/hosts-compression-scripts?style=for-the-badge&labelColor=1D1D1D&color=ffff99)         |
+|      Commits in last month       | ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Lateralus138/hosts-compression-scripts?style=for-the-badge&labelColor=1D1D1D&color=ffff99) |
+|       Commits in last year       | ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Lateralus138/hosts-compression-scripts?style=for-the-badge&labelColor=1D1D1D&color=ffff99) |
 
 ## Notes
 

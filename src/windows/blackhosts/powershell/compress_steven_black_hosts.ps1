@@ -1,3 +1,4 @@
+param([String]$File)
 Write-Information "Compiling Steven Black's hosts file content."  -InformationAction Continue
 $content = @(Get-Content 'C:\Windows\System32\drivers\etc\hosts')
 $Break = $False
@@ -15,13 +16,13 @@ $urls = @(
 		ForEach-Object { ($_ -split '\s')[1] }
 	 )
 $urls_count = $urls.Count
-$urllines = @("`n")
- Write-Information "Attempting to compress hosts file urls." -InformationAction Continue
+$urllines = "`n"
+Write-Information "Attempting to compress hosts file urls." -InformationAction Continue
 $index = 0
 while ($urls.length -gt 1)
 {
 	$one, $two, $three, $four, $five, $six, $seven, $eight, $nine, $rest = $urls
-	$urllines += "0.0.0.0 $one $two $three $four $five $six $seven $eight $nine"
+	$urllines += "0.0.0.0 $one $two $three $four $five $six $seven $eight $nine`n"
 	$urls = @($rest)
 	$index += 9
 	Write-Progress -Activity ("[" + $urls.Count + "] urls left to compress. ") -PercentComplete ($index * 100 / $urls_count) -Status 'Compressing...'
@@ -37,6 +38,14 @@ else
 }
 Write-Information "Hosts file urls finished compressing." -InformationAction Continue
 Write-Information ("Compressed [" + $urls_count + "] urls into [" + $result + "] lines.") -InformationAction Continue
-$content_header
-$urllines
-$content_footer
+$body = ($content_header).Replace("`n`n", "`n").Trim("`n")
+$body += ($urllines).Replace("`n`n", "`n").Trim("`n")
+$body += $content_footer
+if ($File)
+{
+	$body | Out-File "$File" -Force -Encoding utf8
+}
+else
+{
+	$body
+}
