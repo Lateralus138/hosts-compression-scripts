@@ -26,6 +26,7 @@
     - [Note 2](#note-2)
     - [Note 3](#note-3)
   - [Contribute](#contribute)
+  - [Support Me If You Like](#support-me-if-you-like)
   - [LICENSE](#license)
 
 ---
@@ -221,11 +222,27 @@ What is a hostname
 
 [What is an IP address @ DDG](https://duckduckgo.com/?q=What+is+an+IP+address&t=h_&ia=web)
 
+---
+
 ## Contribute
 
 Please feel free to contribute by `forking and making a *pull request*.
 
 [![FORKTHIS](docs/images/fork_this_button_small.png)](https://github.com/Lateralus138/hosts-compression-scripts/fork)
+
+---
+
+## Support Me If You Like
+
+&#x49;&#x66;&#x20;&#x79;&#x6f;&#x75;&#x20;&#x6c;&#x69;&#x6b;&#x65;&#x20;&#x61;&#x6e;&#x79;&#x20;&#x6f;&#x66;&#x20;&#x74;&#x68;&#x65;&#x20;&#x70;&#x72;&#x6f;&#x6a;&#x65;&#x63;&#x74;&#x73;&#x20;&#x62;&#x65;&#x6c;&#x6f;&#x77;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x63;&#x61;&#x72;&#x65;&#x20;&#x74;&#x6f;&#x20;&#x64;&#x6f;&#x6e;&#x61;&#x74;&#x65;&#x20;&#x74;&#x6f;&#x20;&#x6d;&#x79;&#x20;***PayPal***&#x3a;
+
+[![PayPal Donation](./docs/images/paypal_donate_button.png)](https://paypal.me/ianapride?locale.x=en_US)
+
+&#x4f;&#x72;&#x20;***Buy Me A Coffee***&#x20;&#x69;&#x66;&#x20;&#x79;&#x6f;&#x75;&#x72;&#x20;&#x70;&#x72;&#x65;&#x66;&#x65;&#x72;&#x3a;
+
+[![Buy Me A Coffee](./docs/images/buymeacoffe_a.png)](https://www.buymeacoffee.com/ianalanpride)
+
+---
 
 ## [LICENSE](./LICENSE)
 
