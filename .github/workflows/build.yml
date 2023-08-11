@@ -57,7 +57,6 @@ jobs:
         $(Get-FileHash -Path "$powershell_blackhosts_file" -Algorithm MD5).Hash
         $hash = $(Get-FileHash -Path "$powershell_blackhosts_file" -Algorithm MD5).Hash
         ((Get-Content -path $file -Raw) -replace 'PLACEHOLDER',$hash) | Set-Content -Path "$file"
-
         $compress_linux_generic_hosts_bash_text = @'
         {
           "schemaVersion": 1,
@@ -76,11 +75,12 @@ jobs:
         $(Get-FileHash -Path "$linux_generic_bash_file" -Algorithm MD5).Hash
         $hash = $(Get-FileHash -Path "$linux_generic_bash_file" -Algorithm MD5).Hash
         ((Get-Content -path $file -Raw) -replace 'PLACEHOLDER',$hash) | Set-Content -Path "$file"
+        git checkout dev
         git add .\docs\json\*
         git config --global user.name 'Lateralus138'
         git config --global user.email 'Lateralus138@users.noreply.github.com'
         git commit --allow-empty -am "Pushed .\docs\json\* to dev. - $(Get-Date ([datetime]::UtcNow)) UTC"
-        git push --force
+        git push --force origin dev
 - uses: ncipollo/release-action@v1
   if: steps.release_all.conclusion == 'success'
   with:
