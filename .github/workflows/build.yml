@@ -81,7 +81,7 @@ jobs:
         git config --global user.name 'Lateralus138'
         git config --global user.email 'Lateralus138@users.noreply.github.com'
         git commit --allow-empty -am "Pushed .\docs\json\* to dev. - $(Get-Date ([datetime]::UtcNow)) UTC"
-        git push --force origin dev
+        git push origin dev --force
 - uses: ncipollo/release-action@v1
   if: steps.release_all.conclusion == 'success'
   with:
