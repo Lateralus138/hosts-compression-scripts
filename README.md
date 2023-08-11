@@ -16,10 +16,14 @@
     - [Compressing Windows](#compressing-windows)
       - [PowerShell Compression - Steven Black's](#powershell-compression---steven-blacks)
     - [Replacing Windows Hosts File](#replacing-windows-hosts-file)
+    - [Compressing Linux](#compressing-linux)
+      - [Bash Compression - Generic](#bash-compression---generic)
+    - [Replacing Linux Hosts File](#replacing-linux-hosts-file)
   - [Project Information](#project-information)
     - [Source File Quality](#source-file-quality)
     - [File MD5 Hashes](#file-md5-hashes)
-    - [Current Windows Black Hosts PowerShell Script](#current-windows-black-hosts-powershell-script)
+      - [Current Windows Black Hosts PowerShell Script](#current-windows-black-hosts-powershell-script)
+      - [Current Linux Generic Hosts Bash Compression Script](#current-linux-generic-hosts-bash-compression-script)
     - [Other Miscellaneous File Information](#other-miscellaneous-file-information)
   - [Notes](#notes)
     - [Note 1](#note-1)
@@ -69,9 +73,7 @@ Please bear with me as this is a lot of work and I am a busy man, but in my opin
       - [ ] Create CMD script - Generic
       - [ ] Create AutoHotkey script/compiled executable for both.
     - [ ] Linux
-      - [ ] Create Bash script - Steven Black's
-      - [ ] Create Bash script - Generic
-      - [ ] Create POSIX shell script - Steven Black's
+      - [x] Create Bash script - Generic
       - [ ] Create POSIX shell script - Generic
     - [ ] MacOS
       - [ ] Probably not, we'll see
@@ -115,17 +117,16 @@ The Windows hosts file located at ```C:\Windows\System32\drivers\etc\hosts```
 
 This assumes you have already installed a custom hosts file from Mr. Black's repository and it is located in the appropriate directory as stated above.
 
-1. Download ```compress_steven_black_hosts.ps1``` from the current [Releases Page](https://github.com/Lateralus138/hosts-compression-scripts/releases) or directly from [src\windows\blackhosts\compress_steven_black_hosts.ps1](src\windows\blackhosts\compress_steven_black_hosts.ps1) and place anywhere you like. 
+1. Download ```compress_steven_black_hosts.ps1``` from the current [Releases Page](https://github.com/Lateralus138/hosts-compression-scripts/releases) and place it anywhere you like. 
 2. Open a PowerShell terminal from the Start Menu, Run (Win+r), or from CMD (powershell or pwsh).
 ![StartMenuPowerShell](docs/images/pshell_start_menu.png)
 ![RunPowerShell](docs/images/pshell_run.png)
 ![CMDPowerShell](docs/images/pshell_cmd.png)
-
-3. Change directory to the location of the PS1 script you downloaded from here; you don't have to, but if you don't you must provide the path to the full script (for example C:\Path\To\ScriptLocation\script.ps1). For example:
+2. Change directory to the location of the PS1 script you downloaded from here; you don't have to, but if you don't you must provide the path to the full script (for example C:\Path\To\ScriptLocation\script.ps1). For example:
 ```PowerShell
  PS> cd C:\Users\<USERNAME>\Downloads
 ```
-4. It's possible that executing PowerShell scripts is disabled by default on your Windows machine. If so then enable it. You'll need to run this next command as Administrator in an Administrative PowerShell instance:
+3. It's possible that executing PowerShell scripts is disabled by default on your Windows machine. If so then enable it. You'll need to run this next command as Administrator in an Administrative PowerShell instance:
       - You can either Right Click->Run as administrator from the Start Menu or use the hotkey ```Win+x``` and either press 'a' or click the options from the menu.
     
     ![WINX](docs/images/winx.png)
@@ -133,12 +134,11 @@ This assumes you have already installed a custom hosts file from Mr. Black's rep
       ```Powershell
        PS> Set-ExecutionPolicy unrestricted
       ```
-5. If you only want to see the compressed results from the command line then (from the directory of the script, unless you want to type the full path) type `.\compress_steven_black_hosts.ps1` and it will somewhat verbosely run through the process of compression and output the results to the screen.
+4. If you only want to see the compressed results from the command line then (from the directory of the script, unless you want to type the full path) type `.\compress_steven_black_hosts.ps1` and it will somewhat verbosely run through the process of compression and output the results to the screen.
 ```
  PS> .\compress_steven_black_hosts.ps1
 ```
-
-6. To actually output the compressed results to a file run the same command, but redirect the output to a file: `compress_steven_black_hosts.ps1 -File hosts`. I do not recommend overwriting the original file (as this is harder to do and I provide a more reliable method below in [Replacing Windows hosts file](#replacing-windows-hosts-file)).
+5. To actually output the compressed results to a file run the same command, but redirect the output to a file: `compress_steven_black_hosts.ps1 -File hosts`. I do not recommend overwriting the original file (as this is harder to do and I provide a more reliable method below in [Replacing Windows hosts file](#replacing-windows-hosts-file)).
 ```
  PS> .\compress_steven_black_hosts.ps1 -File hosts
 ```
@@ -173,6 +173,57 @@ PS> ipconfig /flushdns
 5. Copy and paste the new *hosts* file to the `etc` directory where you just deleted the original file.
 6. [Somewhat Optional] Reboot your system. You can wait to do this, but it's possible that not all services and applications that utilize the hosts file/DNS caching will utilize the new changes until reboot.
 
+### Compressing Linux
+
+The *Linux* hosts file is located at `/etc/hosts`.
+
+#### Bash Compression - Generic
+
+This assumes you have already installed a custom hosts file or have altered it yourself. Unlike Windows this method is much easier (of course).
+
+There are two modes; you can just view the compressed result (default) in the terminal or output the compressed result to a file. 
+
+1. Download ```compress_linux_generic_hosts.bash``` from the current [Releases Page](https://github.com/Lateralus138/hosts-compression-scripts/releases) and place it anywhere you like.
+2. Open a *Bash* shell in the terminal of your choice and navigate to the directory where the script is located (not necessary, but you if you don't then you must provide the full path).
+3. You may need set the permissions of the script to executable. This can be done in a few ways using `chmod`.
+   - Set the file to execuable for the current user only:
+   ```Bash
+    $ chmod u+x /path/to/compress_linux_generic_hosts.bash
+   ```
+   - Set the file to execuable for everyone:
+    ```Bash
+    $ chmod +x /path/to/compress_linux_generic_hosts.bash
+    # or
+    $ chmod 0755 /path/to/compress_linux_generic_hosts.bash
+    ```
+4. [Default Output] To see the resulting compressed output:
+   ```Bash
+    $ ./compress_linux_generic_hosts.bash
+   ```
+5. [File Output] Output the compressed result to a file. You can either make a different file or overwrite the original, but if you overwrite you must use `sudo`:
+   - To a new file
+    ```Bash
+     $ ./compress_linux_generic_hosts.bash hosts
+     # or
+     $ ./compress_linux_generic_hosts.bash hosts /path/to/new/hosts
+    ```
+    - Overwrite `/etc/hosts`
+    ```Bash
+     $ sudo ./compress_linux_generic_hosts.bash /etc/hosts
+    ```
+### Replacing Linux Hosts File
+
+Unlike Windows this is simple and only necessary if you didn't use the overwrite method:
+
+1. Copy the file to the new file to `/etc/hosts` using `sudo`.
+   ```Bash
+    $ sudo cp /path/to/new/hosts /etc/hosts
+   ```
+2. [Optional] You may want to flush the DNS cache, but it's no usually necessary. I won't go in-depth here, but one possible way is to use `resolvectl flush-caches`.
+   ```Bash
+    $ resolvectl flush-caches
+   ```
+
 ## Project Information
 
 <!-- &#x54;&#x68;&#x69;&#x73;&#x20;&#x70;&#x72;&#x6f;&#x6a;&#x65;&#x63;&#x74;&#x20;&#x69;&#x73;&#x20;&#x77;&#x72;&#x69;&#x74;&#x74;&#x65;&#x6e;&#x20;&#x69;&#x6e;&#x20;`C++`.
@@ -191,9 +242,13 @@ PS> ipconfig /flushdns
 
 &#x41;&#x6c;&#x6c;&#x20;&#x68;&#x61;&#x73;&#x68;&#x65;&#x73;&#x20;&#x61;&#x72;&#x65;&#x20;&#x72;&#x65;&#x74;&#x72;&#x69;&#x65;&#x76;&#x65;&#x64;&#x20;&#x61;&#x74;&#x20;&#x63;&#x6f;&#x6d;&#x70;&#x69;&#x6c;&#x65;&#x2f;&#x62;&#x75;&#x69;&#x6c;&#x64;&#x20;&#x74;&#x69;&#x6d;&#x65;&#x2e;
 
-### Current Windows Black Hosts PowerShell Script
+#### Current Windows Black Hosts PowerShell Script
 
 ![WINDOWS Black Hosts PowerShell Script MD5](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Lateralus138/hosts-compression-scripts/master/docs/json/compress_steven_black_hosts_x86_md5.json)
+
+#### Current Linux Generic Hosts Bash Compression Script
+
+![Linux Generic Hosts Bash Compression Script MD5](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Lateralus138/hosts-compression-scripts/master/docs/json/compress_linux_generic_hosts_bash_script_md5.json)
 
 
 ### Other Miscellaneous File Information

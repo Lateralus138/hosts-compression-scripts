@@ -17,8 +17,8 @@ env:
   VS_EPOCH:
   VS_FULL:
   RELEASE_TITLE: "Hosts Compression Scripts"
-  RELEASE_FILE: "./docs/md/release.md"
-  PRERELEASE: False
+  RELEASE_FILE: "./docs/md/pre-release.md"
+  PRERELEASE: True
 jobs:
   build_windows:
     name: Release
@@ -28,9 +28,14 @@ jobs:
     - id: release_all
       run: |
         $powershell_blackhosts_file = 'src\windows\blackhosts\powershell\compress_steven_black_hosts.ps1'
+        $linux_generic_bash_file = 'src/linux/generic/compress_linux_generic_hosts.bash'
         if (!(Test-Path $powershell_blackhosts_file -PathType Leaf))
         {
           Exit 255
+        }
+        if (!(Test-Path $linux_generic_bash_file -PathType Leaf))
+        {
+          Exit 254
         }
         $epoch = [decimal] [datetimeoffset]::UtcNow.ToUnixTimeMilliseconds()
         echo "VS_FULL=${{ env.VS_PROGRAM }}.${{ env.VS_FILE }}.$epoch" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
@@ -52,18 +57,38 @@ jobs:
         $(Get-FileHash -Path "$powershell_blackhosts_file" -Algorithm MD5).Hash
         $hash = $(Get-FileHash -Path "$powershell_blackhosts_file" -Algorithm MD5).Hash
         ((Get-Content -path $file -Raw) -replace 'PLACEHOLDER',$hash) | Set-Content -Path "$file"
+
+        $compress_linux_generic_hosts_bash_text = @'
+        {
+          "schemaVersion": 1,
+          "color": "2E9778",
+          "label": "compress_linux_generic_hosts.bash MD5",
+          "message": "PLACEHOLDER",
+          "labelColor": "1d1d1d",
+          "style": "for-the-badge",
+          "namedLogo": "linux"
+        }
+        '@
+        New-Item -ItemType Directory -Force -Path '.\docs\json'
+        Write-Output "$compress_linux_generic_hosts_bash_text" > .\docs\json\compress_linux_generic_hosts_bash_script_md5.json
+        $file = ".\docs\json\compress_linux_generic_hosts_bash_script_md5.json"
+        $md5 = New-Object -TypeName System.Security.Cryptography.MD5CryptoServiceProvider
+        $(Get-FileHash -Path "$linux_generic_bash_file" -Algorithm MD5).Hash
+        $hash = $(Get-FileHash -Path "$linux_generic_bash_file" -Algorithm MD5).Hash
+        ((Get-Content -path $file -Raw) -replace 'PLACEHOLDER',$hash) | Set-Content -Path "$file"
+        git checkout dev
         git add .\docs\json\*
         git config --global user.name 'Lateralus138'
         git config --global user.email 'Lateralus138@users.noreply.github.com'
-        git commit --allow-empty -am "Pushed .\docs\json\* to master. - $(Get-Date ([datetime]::UtcNow)) UTC"
-        git push --force origin master
-    - uses: ncipollo/release-action@v1
-      if: steps.release_all.conclusion == 'success'
-      with:
-        allowUpdates: True
-        tag: ${{ env.VS_FULL }}
-        name: ${{ env.RELEASE_TITLE }} - v${{ env.VS_FULL }}
-        bodyFile: ${{ env.RELEASE_FILE }}
-        prerelease: ${{ env.PRERELEASE }}
-        artifacts: src\windows\blackhosts\powershell\compress_steven_black_hosts.ps1
-        token: ${{ secrets.GITHUB_TOKEN }}
+        git commit --allow-empty -am "Pushed .\docs\json\* to dev. - $(Get-Date ([datetime]::UtcNow)) UTC"
+        git push --force origin dev
+- uses: ncipollo/release-action@v1
+  if: steps.release_all.conclusion == 'success'
+  with:
+    allowUpdates: True
+    tag: ${{ env.VS_FULL }}
+    name: ${{ env.RELEASE_TITLE }} - v${{ env.VS_FULL }}
+    bodyFile: ${{ env.RELEASE_FILE }}
+    prerelease: ${{ env.PRERELEASE }}
+    artifacts: src\windows\blackhosts\powershell\compress_steven_black_hosts.ps1,src\linux\generic\compress_linux_generic_hosts.bash
+    token: ${{ secrets.GITHUB_TOKEN }}
