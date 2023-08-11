@@ -81,13 +81,13 @@ jobs:
         git config --global user.email 'Lateralus138@users.noreply.github.com'
         git commit --allow-empty -am "Pushed .\docs\json\* to dev. - $(Get-Date ([datetime]::UtcNow)) UTC"
         git push --force origin dev
-- uses: ncipollo/release-action@v1
-  if: steps.release_all.conclusion == 'success'
-  with:
-    allowUpdates: True
-    tag: ${{ env.VS_FULL }}
-    name: ${{ env.RELEASE_TITLE }} - v${{ env.VS_FULL }}
-    bodyFile: ${{ env.RELEASE_FILE }}
-    prerelease: ${{ env.PRERELEASE }}
-    artifacts: src\windows\blackhosts\powershell\compress_steven_black_hosts.ps1,src\linux\generic\compress_linux_generic_hosts.bash
-    token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: ncipollo/release-action@v1
+      if: steps.release_all.conclusion == 'success'
+      with:
+        allowUpdates: True
+        tag: ${{ env.VS_FULL }}
+        name: ${{ env.RELEASE_TITLE }} - v${{ env.VS_FULL }}
+        bodyFile: ${{ env.RELEASE_FILE }}
+        prerelease: ${{ env.PRERELEASE }}
+        artifacts: src\windows\blackhosts\powershell\compress_steven_black_hosts.ps1,src\linux\generic\compress_linux_generic_hosts.bash
+        token: ${{ secrets.GITHUB_TOKEN }}
