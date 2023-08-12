@@ -185,12 +185,12 @@ There are two modes; you can just view the compressed result (default) in the te
 
 1. Download ```compress_linux_generic_hosts.bash``` from the current [Releases Page](https://github.com/Lateralus138/hosts-compression-scripts/releases) and place it anywhere you like.
 2. Open a *Bash* shell in the terminal of your choice and navigate to the directory where the script is located (not necessary, but you if you don't then you must provide the full path).
-3. You may need set the permissions of the script to executable. This can be done in a few ways using `chmod`.
-   - Set the file to execuable for the current user only:
+3. You may need to set the permissions of the script to executable. This can be done in a few ways using `chmod`.
+   - Set the file to executable for the current user only:
    ```Bash
     $ chmod u+x /path/to/compress_linux_generic_hosts.bash
    ```
-   - Set the file to execuable for everyone:
+   - Set the file to executable for everyone:
     ```Bash
     $ chmod +x /path/to/compress_linux_generic_hosts.bash
     # or
@@ -205,7 +205,7 @@ There are two modes; you can just view the compressed result (default) in the te
     ```Bash
      $ ./compress_linux_generic_hosts.bash hosts
      # or
-     $ ./compress_linux_generic_hosts.bash hosts /path/to/new/hosts
+     $ ./compress_linux_generic_hosts.bash /path/to/new/hosts
     ```
     - Overwrite `/etc/hosts`
     ```Bash
@@ -219,7 +219,7 @@ Unlike Windows this is simple and only necessary if you didn't use the overwrite
    ```Bash
     $ sudo cp /path/to/new/hosts /etc/hosts
    ```
-2. [Optional] You may want to flush the DNS cache, but it's no usually necessary. I won't go in-depth here, but one possible way is to use `resolvectl flush-caches`.
+2. [Optional] You may want to flush the DNS cache, but it's not usually necessary. I won't go in-depth here, but one possible way is to use `resolvectl flush-caches`.
    ```Bash
     $ resolvectl flush-caches
    ```
