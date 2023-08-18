@@ -43,7 +43,7 @@ Scripts to compress the hosts file in various operating systems.
 
 ### Description
 
- Here you will find *scripts* I've written (eventually programs) to help compress the hosts file found in various operating systems. The very first script provided here is a PowerShell script specifically for the main hosts file found at [Steven Black's repository](https://github.com/StevenBlack/hosts), but I will add more gradually. The Steven Black version has been written specifically to be able to keep all content in the file just rearranging it. To be able to write more of it for the rest of his files I need to study the other versions of his files to find the best delimiters for parsing. I will work on the generic PowerShell script next to have a more universal version, but it more than likely will discard all extra text and only keep the urls and discard any extra text.
+ Here you will find *scripts* I've written (eventually programs) to help compress the hosts file found in various operating systems. The very first script provided here is a PowerShell script specifically for the main hosts file found at [Steven Black's repository](https://github.com/StevenBlack/hosts), but I will add more gradually. The Steven Black version has been written specifically to be able to keep all content in the file just rearranging it. To be able to write more of it for the rest of his files I need to study the other versions of his files to find the best delimiters for parsing. I will work on the generic PowerShell script next to have a more universal version, but it more than likely will discard all extra text and only keep the URLS and discard any extra text.
 
  The *hosts*<sup>[[1](#note-1)]</sup> file is a text file in all (that I know of) operating systems that maps hostnames[[2](#note-2)]</sup> (google.com for example) to ip addresses[[3](#note-3)]</sup> (0.0.0.0 or 127.0.0.1 for examples) and they can become very large if you use a custom one (especially a consolidated one such as one of [Steven Black's](https://github.com/StevenBlack/hosts)). In *Linux* the file's size is not much of an issue, but in Windows (especially) this can slow down DNS caching and therefore cause internet/application issues such as slowing down the internet/external network or even bringing the internet to a halt. A way to circumvent this issue is to *compress* (or aggregate) multiple host names into single lines (or disable the DNS Client, which I definitely do not recommend for various reasons (and especially if you use WSL)). Windows can handle 9 hostnames per line; for example:
 
@@ -54,6 +54,8 @@ Scripts to compress the hosts file in various operating systems.
  whereas Linux has no limit (that I know of; I have tested 10000 names on a single line).
 
  Therefore it's a great idea to compress larges hosts files, especially in Windows and one can do so with scripts found here. My last compression turned 189k+ hostnames into 21k+ lines and went from an hour plus of no internet after boot to instantaneous internet.
+
+ NOTE 1: There's a misconception that the host's file size matters (some people say over 1MB is problematic) and it really doesn't. It's more about the number or URLS per IP line. For example; a file size of 6MB+ compresses down to 5MB and runs exponentially better to near unnoticeable. 
 
 ### Motivation
 
@@ -115,6 +117,10 @@ The Windows hosts file located at ```C:\Windows\System32\drivers\etc\hosts```
 
 #### PowerShell Compression - Steven Black's
 
+NOTE 1: This will eventually be replaced by a more universal generic script. I originally started this project with Steven's main hosts file in mind and so that's where my head was at at the time and writing a more universal script might be a bit more work (maybe not though, we'll see).
+
+NOTE 2: This script could take some time depending on your machine. Reason 1 being that this is a shell script and though PowerShell has come a long way it can't compare to a compiled binary (in C/C++ for example). Reason 2 being you are parsing hundreds of thousands (more or less) of URLS! If you weren't then you wouldn't need this script. 
+
 This assumes you have already installed a custom hosts file from Mr. Black's repository and it is located in the appropriate directory as stated above.
 
 1. Download ```compress_steven_black_hosts.ps1``` from the current [Releases Page](https://github.com/Lateralus138/hosts-compression-scripts/releases) and place it anywhere you like. 
@@ -143,7 +149,7 @@ This assumes you have already installed a custom hosts file from Mr. Black's rep
  PS> .\compress_steven_black_hosts.ps1 -File hosts
 ```
 
-You will now have a new compressed version of Steven Black's hosts file. All of the original content of the file will be there, but reordered. As some of the comments (#[Added]... for example) were mixed in with the original urls they will now be placed at the bottom and make no sense. The other text (header and footer) in the original file will still be in their appropriate places.
+You will now have a new compressed version of Steven Black's hosts file. All of the original content of the file will be there, but reordered. As some of the comments (#[Added]... for example) were mixed in with the original URLS they will now be placed at the bottom and make no sense. The other text (header and footer) in the original file will still be in their appropriate places.
 
 ### Replacing Windows Hosts File
 
