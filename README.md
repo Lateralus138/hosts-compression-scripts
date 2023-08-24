@@ -17,13 +17,13 @@
       - [PowerShell Compression - Steven Black's](#powershell-compression---steven-blacks)
     - [Replacing Windows Hosts File](#replacing-windows-hosts-file)
     - [Compressing Linux](#compressing-linux)
-      - [Bash Compression - Generic](#bash-compression---generic)
+      - [Bash Compression - Universal](#bash-compression---universal)
     - [Replacing Linux Hosts File](#replacing-linux-hosts-file)
   - [Project Information](#project-information)
     - [Source File Quality](#source-file-quality)
     - [File MD5 Hashes](#file-md5-hashes)
       - [Current Windows Black Hosts PowerShell Script](#current-windows-black-hosts-powershell-script)
-      - [Current Linux Generic Hosts Bash Compression Script](#current-linux-generic-hosts-bash-compression-script)
+      - [Current Linux Universal Hosts Bash Compression Script](#current-linux-universal-hosts-bash-compression-script)
     - [Other Miscellaneous File Information](#other-miscellaneous-file-information)
   - [Notes](#notes)
     - [Note 1](#note-1)
@@ -39,11 +39,11 @@
 
 Scripts to compress the hosts file in various operating systems.
 
- ***DISCLAIMER*** - For now I've only written the *PowerShell* script because it is a priority as *Windows* is horrible with DNS caching and a large hosts file. *Linux* handles large hosts files just fine.
+ ***DISCLAIMER*** - The current PowerShell script here is only for the main Steven Black *HOSTS* file. I will be writing a more universal PowerShell script soon. At the time of development I was not planning any public release and it was for me alone. Coming soon.
 
 ### Description
 
- Here you will find *scripts* I've written (eventually programs) to help compress the hosts file found in various operating systems. The very first script provided here is a PowerShell script specifically for the main hosts file found at [Steven Black's repository](https://github.com/StevenBlack/hosts), but I will add more gradually. The Steven Black version has been written specifically to be able to keep all content in the file just rearranging it. To be able to write more of it for the rest of his files I need to study the other versions of his files to find the best delimiters for parsing. I will work on the generic PowerShell script next to have a more universal version, but it more than likely will discard all extra text and only keep the URLS and discard any extra text.
+ Here you will find *scripts* I've written (eventually programs) to help compress the hosts file found in various operating systems. The very first script provided here is a PowerShell script specifically for the main hosts file found at [Steven Black's repository](https://github.com/StevenBlack/hosts), but I will add more gradually. The Steven Black version has been written specifically to be able to keep all content in the file just rearranging it. To be able to write more of it for the rest of his files I need to study the other versions of his files to find the best delimiters for parsing. I will work on the universal PowerShell script next to have a more universal version, but it more than likely will discard all extra text and only keep the URLS and discard any extra text.
 
  The *hosts*<sup>[[1](#note-1)]</sup> file is a text file in all (that I know of) operating systems that maps hostnames[[2](#note-2)]</sup> (google.com for example) to ip addresses[[3](#note-3)]</sup> (0.0.0.0 or 127.0.0.1 for examples) and they can become very large if you use a custom one (especially a consolidated one such as one of [Steven Black's](https://github.com/StevenBlack/hosts)). In *Linux* the file's size is not much of an issue, but in Windows (especially) this can slow down DNS caching and therefore cause internet/application issues such as slowing down the internet/external network or even bringing the internet to a halt. A way to circumvent this issue is to *compress* (or aggregate) multiple host names into single lines (or disable the DNS Client, which I definitely do not recommend for various reasons (and especially if you use WSL)). Windows can handle 9 hostnames per line; for example:
 
@@ -70,13 +70,13 @@ Please bear with me as this is a lot of work and I am a busy man, but in my opin
   - [ ] Scripts
     - [ ] Windows
       - [x] Create PowerShell script - Steven Black's
-      - [ ] Create PowerShell script - Generic
+      - [ ] Create PowerShell script - Universal
       - [ ] Create CMD script - Steven Black's
-      - [ ] Create CMD script - Generic
+      - [ ] Create CMD script - Universal
       - [ ] Create AutoHotkey script/compiled executable for both.
     - [ ] Linux
-      - [x] Create Bash script - Generic
-      - [ ] Create POSIX shell script - Generic
+      - [x] Create Bash script - Universal
+      - [ ] Create POSIX shell script - Universal
     - [ ] MacOS
       - [ ] Probably not, we'll see
     - [ ] Cross Platform
@@ -183,7 +183,7 @@ PS> ipconfig /flushdns
 
 The *Linux* hosts file is located at `/etc/hosts`.
 
-#### Bash Compression - Generic
+#### Bash Compression - Universal
 
 This assumes you have already installed a custom hosts file or have altered it yourself. Unlike Windows this method is much easier (of course).
 
@@ -252,9 +252,9 @@ Unlike Windows this is simple and only necessary if you didn't use the overwrite
 
 ![WINDOWS Black Hosts PowerShell Script MD5](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Lateralus138/hosts-compression-scripts/master/docs/json/compress_steven_black_hosts_x86_md5.json)
 
-#### Current Linux Generic Hosts Bash Compression Script
+#### Current Linux Universal Hosts Bash Compression Script
 
-![Linux Generic Hosts Bash Compression Script MD5](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Lateralus138/hosts-compression-scripts/master/docs/json/compress_linux_generic_hosts_bash_script_md5.json)
+![Linux Universal Hosts Bash Compression Script MD5](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Lateralus138/hosts-compression-scripts/master/docs/json/compress_linux_generic_hosts_bash_script_md5.json)
 
 
 ### Other Miscellaneous File Information
