@@ -37,6 +37,8 @@
 
 ## About
 
+***NOTICE***: ***The universal PowerShell script is complete and will be coming very soon. This script should be able to replace the Steven Black's version completely, but I will keep it here for archival reasons.***
+
 Scripts to compress the hosts file in various operating systems.
 
  ***DISCLAIMER*** - The current PowerShell script here is only for the main Steven Black *HOSTS* file. I will be writing a more universal PowerShell script soon. At the time of development I was not planning any public release and it was for me alone. Coming soon.
