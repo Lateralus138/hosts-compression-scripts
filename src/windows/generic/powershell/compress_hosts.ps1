@@ -16,7 +16,7 @@
 	Version 1.0.0 - Added Get-Help comments
 #>
 # ╔═══════════════════════════════════════════════════════════╗
-# ║ Universal hosts file comression script for Windows        ║
+# ║ Universal hosts file compression script for Windows       ║
 # ║ © 2023 Ian Pride - New Pride Software/Services            ║
 # ║ https://github.com/Lateralus138/hosts-compression-scripts ║
 # ╚═══════════════════════════════════════════════════════════╝
