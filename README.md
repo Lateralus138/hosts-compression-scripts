@@ -438,8 +438,17 @@ Please feel free to contribute by `forking and making a *pull request*.
 
 ## Change Log
 
-- v1.0.1691110144084 - Initial release; Only file was the original Steven Black's PowerShell script.
-- v1.0.1691784030635 - Added the Bash script for Linux.
+- v1.0.1691110144084
+  - Initial release
+  - Only file was the original Steven Black's PowerShell script.
+- v1.0.1691784030635
+  - Added the Bash script for Linux.
+- v1.0.1693085448 (8/26/2023 9:30:48 PM UTC)
+  - Replaced older Steven Black PowerShell version.
+  - New version provides a universal approach to facilitate all types of normal hosts files.
+  - Essentially a whole rewrite with a slight performance increase.
+  - Added an argument `-InputFile` to accept files other than the default.
+  - Add information to the script file to facilitate `Get-Help`.
 
 ---
 
