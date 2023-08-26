@@ -14,7 +14,7 @@
   - [Usage](#usage)
   - [Guides And Examples](#guides-and-examples)
     - [Compressing Windows](#compressing-windows)
-      - [PowerShell Compression - Steven Black's](#powershell-compression---steven-blacks)
+      - [PowerShell Compression - Universal](#powershell-compression---universal)
     - [Replacing Windows Hosts File](#replacing-windows-hosts-file)
     - [Compressing Linux](#compressing-linux)
       - [Bash Compression - Universal](#bash-compression---universal)
@@ -22,7 +22,7 @@
   - [Project Information](#project-information)
     - [Source File Quality](#source-file-quality)
     - [File MD5 Hashes](#file-md5-hashes)
-      - [Current Windows Black Hosts PowerShell Script](#current-windows-black-hosts-powershell-script)
+      - [Current Universal Hosts PowerShell Script](#current-universal-hosts-powershell-script)
       - [Current Linux Universal Hosts Bash Compression Script](#current-linux-universal-hosts-bash-compression-script)
     - [Other Miscellaneous File Information](#other-miscellaneous-file-information)
   - [Notes](#notes)
@@ -38,15 +38,18 @@
 
 ## About
 
-***NOTICE***: ***The universal PowerShell script is complete and will be coming very soon. This script should be able to replace the Steven Black's version completely, but I will keep it here for archival reasons.***
+<!-- ***NOTICE***: ***The universal PowerShell script is complete and will be coming very soon. This script should be able to replace the Steven Black's version completely, but I will keep it here for archival reasons.*** -->
 
 Scripts to compress the hosts file in various operating systems.
 
- ***DISCLAIMER*** - The current PowerShell script here is only for the main Steven Black *HOSTS* file. I will be writing a more universal PowerShell script soon. At the time of development I was not planning any public release and it was for me alone. Coming soon.
+***NOTICE***: ***The universal PowerShell script now replaces the Steven Black only version. and provides a slight performance increase.*** If you downloaded the previous version then you may want to download and replace the old version.
 
+ <!-- ***DISCLAIMER*** - The current PowerShell script here is only for the main Steven Black *HOSTS* file. I will be writing a more universal PowerShell script soon. At the time of development I was not planning any public release and it was for me alone. Coming soon. -->
 ### Description
 
- Here you will find *scripts* I've written (eventually programs) to help compress the hosts file found in various operating systems. The very first script provided here is a PowerShell script specifically for the main hosts file found at [Steven Black's repository](https://github.com/StevenBlack/hosts), but I will add more gradually. The Steven Black version has been written specifically to be able to keep all content in the file just rearranging it. To be able to write more of it for the rest of his files I need to study the other versions of his files to find the best delimiters for parsing. I will work on the universal PowerShell script next to have a more universal version, but it more than likely will discard all extra text and only keep the URLS and discard any extra text.
+ <!-- Here you will find *scripts* I've written (eventually programs) to help compress the hosts file found in various operating systems. The very first script provided here is a PowerShell script specifically for the main hosts file found at [Steven Black's repository](https://github.com/StevenBlack/hosts), but I will add more gradually. The Steven Black version has been written specifically to be able to keep all content in the file just rearranging it. To be able to write more of it for the rest of his files I need to study the other versions of his files to find the best delimiters for parsing. I will work on the universal PowerShell script next to have a more universal version, but it more than likely will discard all extra text and only keep the URLS and discard any extra text. -->
+
+Here you will find *scripts* (eventually programs) to help compress the hosts file found in various operating systems. This is especially necessary for extremely large hosts files similar to aggregated files you might find at repositories such as [Steven Black's](https://github.com/StevenBlack/hosts) (which I highly endorse).
 
  The *hosts*<sup>[[1](#note-1)]</sup> file is a text file in all (that I know of) operating systems that maps hostnames[[2](#note-2)]</sup> (google.com for example) to IP addresses[[3](#note-3)]</sup> (0.0.0.0 or 127.0.0.1 for examples) and they can become very large if you use a custom one (especially a consolidated one such as one of [Steven Black's](https://github.com/StevenBlack/hosts)). In *Linux* the file's size is not much of an issue, but in Windows (especially) this can slow down DNS caching and therefore cause internet/application issues such as slowing down the internet/external network or even bringing the internet to a halt. A way to circumvent this issue is to *compress* (or aggregate) multiple host names into single lines (or disable the DNS Client, which I definitely do not recommend for various reasons (and especially if you use WSL)). Windows can handle 9 hostnames per line; for example:
 
@@ -72,8 +75,7 @@ Please bear with me as this is a lot of work and I am a busy man, but in my opin
 
   - [ ] Scripts
     - [ ] Windows
-      - [x] Create PowerShell script - Steven Black's
-      - [ ] Create PowerShell script - Universal
+      - [x] Create PowerShell script - Universal
       - [ ] Create CMD script - Steven Black's
       - [ ] Create CMD script - Universal
       - [ ] Create AutoHotkey script/compiled executable for both.
@@ -118,7 +120,7 @@ More will be added as I write more scripts. These guide assume you have already 
 
 The Windows hosts file located at ```C:\Windows\System32\drivers\etc\hosts```
 
-#### PowerShell Compression - Steven Black's
+<!-- #### PowerShell Compression - Steven Black's
 
 NOTE 1: This will eventually be replaced by a more universal generic script. I originally started this project with Steven's main hosts file in mind and so that's where my head was at at the time and writing a more universal script might be a bit more work (maybe not though, we'll see).
 
@@ -152,7 +154,128 @@ This assumes you have already installed a custom hosts file from Mr. Black's rep
  PS> .\compress_steven_black_hosts.ps1 -File hosts
 ```
 
-You will now have a new compressed version of Steven Black's hosts file. All of the original content of the file will be there, but reordered. As some of the comments (#[Added]... for example) were mixed in with the original URLS they will now be placed at the bottom and make no sense. The other text (header and footer) in the original file will still be in their appropriate places.
+You will now have a new compressed version of Steven Black's hosts file. All of the original content of the file will be there, but reordered. As some of the comments (#[Added]... for example) were mixed in with the original URLS they will now be placed at the bottom and make no sense. The other text (header and footer) in the original file will still be in their appropriate places. -->
+
+#### PowerShell Compression - Universal
+
+NOTE 1: This script could take some time depending on your machine. Reason 1 being that this is a shell script and though PowerShell has come a long way it can't compare to a compiled binary (in C/C++ for example). Reason 2 being you are parsing hundreds of thousands (more or less) of URLS! If you weren't then you wouldn't need this script. This newer *universal* script has been refactored has a slight performance in increase from the original *Steven Black* version.
+
+NOTE 2: You can use this script to compress the default hosts file or any other hosts file by using the `-InputFile` argument switch; For example:
+
+```PowerShell
+  PS> compress_hosts -InputFile C:\Path\to\alternate\hosts
+```
+
+The script provides information to enable `Get-Help`; for example:
+
+```PowerShell
+ PS> Get-Help C:\Path\to\compress_hosts.ps1 -Full
+ # or just "Get-Help compress_hosts -Full" if in %PATH%
+```
+
+Get-Help
+```PowerShell
+ PS> Get-Help compress_hosts -Full
+
+NAME
+    C:\Users\flux\bin\compress_hosts.ps1
+    
+SYNOPSIS
+    Windows hosts file compression script.
+    
+    
+SYNTAX
+    C:\Users\flux\bin\compress_hosts.ps1 [[-OutputFile] <String>] [[-InputFile] <String>] [<CommonParameters>]
+    
+    
+DESCRIPTION
+    PowerShell script to compress a large hosts file in Windows. The default output is to the console.
+    
+
+PARAMETERS
+    -OutputFile <String>
+        Path to an output file.
+        
+        Required?                    false
+        Position?                    1
+        Default value
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    -InputFile <String>
+        Path to an input file. Defaults to 'C:\Windows\System32\drivers\etc\hosts'.
+        
+        Required?                    false
+        Position?                    2
+        Default value                C:\Windows\System32\drivers\etc\hosts
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+        
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216). 
+    
+INPUTS
+    
+OUTPUTS
+    
+NOTES
+    
+    
+        compress_hosts.ps1
+        Author: Ian Pride 
+        Modified date: 1:36 PM Saturday, August 26, 2023
+        Version 1.0.0 - Added Get-Help comments
+
+        ╔═══════════════════════════════════════════════════════════╗
+        ║ Universal hosts file comression script for Windows        ║
+        ║ © 2023 Ian Pride - New Pride Software/Services            ║
+        ║ https://github.com/Lateralus138/hosts-compression-scripts ║
+        ╚═══════════════════════════════════════════════════════════╝
+
+    -------------------------- EXAMPLE 1 --------------------------
+
+    PS>compress_hosts -OutputFile $Env:USERPROFILE\Documents\hosts
+
+RELATED LINKS
+
+```
+
+This assumes you have already installed a custom hosts file from Mr. Black's repository and it is located in the appropriate directory as stated above.
+
+1. Download ```compress_hosts.ps1``` from the current [Releases Page](https://github.com/Lateralus138/hosts-compression-scripts/releases) and place it anywhere you like.
+2. Open a PowerShell terminal from the Start Menu, Run (Win+r), or from CMD (powershell or pwsh).
+![StartMenuPowerShell](docs/images/pshell_start_menu.png)
+![RunPowerShell](docs/images/pshell_run.png)
+![CMDPowerShell](docs/images/pshell_cmd.png)
+3. Change directory to the location of the PS1 script you downloaded from here; you don't have to, but if you don't you must provide the path to the full script (for example C:\Path\To\ScriptLocation\compress_hosts.ps1). For example:
+```PowerShell
+ PS> cd C:\Users\<USERNAME>\Downloads
+```
+You can also place the script somewhere in your `%PATH%` and run without the extensions, for example:
+```PowerShell
+ PS> compress_hosts
+```
+4. It's possible that executing PowerShell scripts is disabled by default on your Windows machine. If so then enable it. You'll need to run this next command as Administrator in an Administrative PowerShell instance:
+      - You can either Right Click->Run as administrator from the Start Menu or use the hotkey ```Win+x``` and either press 'a' or click the options from the menu.
+    
+    ![WINX](docs/images/winx.png)
+      - From the administrative PowerShell instance type `Set-ExecutionPolicy unrestricted` and hit [Enter].
+      ```Powershell
+       PS> Set-ExecutionPolicy unrestricted
+      ```
+5. If you only want to see the compressed results from the command line then (from the directory of the script, unless you want to type the full path) type `.\compress_hosts.ps1` and it will somewhat verbosely run through the process of compression and output the results to the screen.
+```
+ PS> .\compress_hosts.ps1
+```
+6. To actually output the compressed results to a file run the same command, but redirect the output to a file: `compress_hosts.ps1 -OutputFile hosts`. I do not recommend overwriting the original file (as this is harder to do and I provide a more reliable method below in [Replacing Windows hosts file](#replacing-windows-hosts-file)).
+```
+ PS> .\compress_hosts.ps1 -OutputFile host
+```
+
+You will now have a new compressed version of your hosts file. All of the original content of the file will be there, but reordered. As some of the comments (#[Added]... for example) were mixed in with the original URLS they will now be placed at the bottom and make no sense. The other text (header and footer) in the original file will still be in their appropriate places.
 
 ### Replacing Windows Hosts File
 
@@ -251,9 +374,14 @@ Unlike Windows this is simple and only necessary if you didn't use the overwrite
 
 &#x41;&#x6c;&#x6c;&#x20;&#x68;&#x61;&#x73;&#x68;&#x65;&#x73;&#x20;&#x61;&#x72;&#x65;&#x20;&#x72;&#x65;&#x74;&#x72;&#x69;&#x65;&#x76;&#x65;&#x64;&#x20;&#x61;&#x74;&#x20;&#x63;&#x6f;&#x6d;&#x70;&#x69;&#x6c;&#x65;&#x2f;&#x62;&#x75;&#x69;&#x6c;&#x64;&#x20;&#x74;&#x69;&#x6d;&#x65;&#x2e;
 
-#### Current Windows Black Hosts PowerShell Script
+<!-- #### Current Windows Black Hosts PowerShell Script
 
-![WINDOWS Black Hosts PowerShell Script MD5](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Lateralus138/hosts-compression-scripts/master/docs/json/compress_steven_black_hosts_x86_md5.json)
+![WINDOWS Black Hosts PowerShell Script MD5](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Lateralus138/hosts-compression-scripts/master/docs/json/compress_steven_black_hosts_x86_md5.json) -->
+
+#### Current Universal Hosts PowerShell Script
+
+![WINDOWS Universal PowerShell Script MD5](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Lateralus138/hosts-compression-scripts/master/docs/json/compress_universal_hosts_x86_md5.json)
+
 
 #### Current Linux Universal Hosts Bash Compression Script
 
