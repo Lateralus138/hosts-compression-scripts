@@ -31,6 +31,7 @@
     - [Note 3](#note-3)
   - [Contribute](#contribute)
   - [Support Me If You Like](#support-me-if-you-like)
+  - [Change Log](#change-log)
   - [LICENSE](#license)
 
 ---
@@ -304,6 +305,13 @@ Please feel free to contribute by `forking and making a *pull request*.
 &#x4f;&#x72;&#x20;***Buy Me A Coffee***&#x20;&#x69;&#x66;&#x20;&#x79;&#x6f;&#x75;&#x72;&#x20;&#x70;&#x72;&#x65;&#x66;&#x65;&#x72;&#x3a;
 
 [![Buy Me A Coffee](./docs/images/buymeacoffe_a.png)](https://www.buymeacoffee.com/ianalanpride)
+
+---
+
+## Change Log
+
+- v1.0.1691110144084 - Initial release; Only file was the original Steven Black's PowerShell script.
+- v1.0.1691784030635 - Added the Bash script for Linux.
 
 ---
 

@@ -4,6 +4,13 @@
 
 ---
 
+## Change Log
+
+- v1.0.1691110144084 - Initial release; Only file was the original Steven Black's PowerShell script.
+- v1.0.1691784030635 - Added the Bash script for Linux.
+
+---
+
 This information is generated in a *GitHub Action* immediately after the successful build of this project.
 
 ## Current Windows Black Hosts PowerShell Script
