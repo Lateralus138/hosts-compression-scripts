@@ -42,7 +42,7 @@
 
 Scripts to compress the hosts file in various operating systems.
 
-***NOTICE***: ***The universal PowerShell script now replaces the Steven Black only version. and provides a slight performance increase.*** If you downloaded the previous version then you may want to download and replace the old version.
+***NOTICE***: ***The universal PowerShell script now replaces the Steven Black only version and provides a slight performance increase.*** If you downloaded the previous version then you may want to download and replace the old version.
 
  <!-- ***DISCLAIMER*** - The current PowerShell script here is only for the main Steven Black *HOSTS* file. I will be writing a more universal PowerShell script soon. At the time of development I was not planning any public release and it was for me alone. Coming soon. -->
 ### Description
@@ -59,7 +59,7 @@ Here you will find *scripts* (eventually programs) to help compress the hosts fi
 
  whereas Linux has no limit (that I know of; I have tested 10000 names on a single line).
 
- Therefore it's a great idea to compress larges hosts files, especially in Windows and one can do so with scripts found here. My last compression turned 189k+ hostnames into 21k+ lines and went from an hour plus of no internet after boot to instantaneous internet.
+ Therefore it's a great idea to compress larges hosts files, especially in Windows and one can do so with scripts found here. My last compression (as of the official release of this project) turned 189k+ hostnames into 21k+ lines and went from an hour plus of no internet after boot to instantaneous internet.
 
  NOTE 1: There's a misconception that the host's file size matters (some people say over 1MB is problematic) and it really doesn't. It's more about the number or URLS per IP line. For example; a file size of 6MB+ compresses down to 5MB and runs exponentially better to near unnoticeable. 
 
@@ -76,7 +76,6 @@ Please bear with me as this is a lot of work and I am a busy man, but in my opin
   - [ ] Scripts
     - [ ] Windows
       - [x] Create PowerShell script - Universal
-      - [ ] Create CMD script - Steven Black's
       - [ ] Create CMD script - Universal
       - [ ] Create AutoHotkey script/compiled executable for both.
     - [ ] Linux
@@ -94,7 +93,7 @@ Please bear with me as this is a lot of work and I am a busy man, but in my opin
 
 For now these are all command line tools, whether they be a script or binary executable. No immediate plans for GUIs, but that make eventually change.
 
-The main focus for now is Windows and Linux, but as stated in the [Motivation](#motivation) section the whole reasons I started this is for the shipwreck that is the Windows environment. I love Windows and Linux, but to deny there are some issues in Windows (in both really, but most notably Windows) is folly.
+The main focus for now is Windows and Linux, but as stated in the [Motivation](#motivation) section the whole reason I started this is for the shipwreck that is the Windows environment. I love Windows and Linux, but to deny there are some issues in Windows (in both really, but most notably Windows) is folly.
 
 ## Guides And Examples
 
@@ -114,7 +113,7 @@ I'll not give specific instructions on editing or installing the hosts file, if 
 
 [How to edit the hosts file @ DDG](https://duckduckgo.com/?q=How+to+edit+the+hosts+file&ia=web)
 
-More will be added as I write more scripts. These guide assume you have already replaced or altered your hosts file. These scripts do not edit the file in place (for now) and only prints the output to the console by default.
+More will be added as I write more scripts. These guides assume you have already replaced or altered your hosts file. These scripts do not edit the file in place (for now) and only prints the output to the console by default.
 
 ### Compressing Windows
 
@@ -158,7 +157,7 @@ You will now have a new compressed version of Steven Black's hosts file. All of 
 
 #### PowerShell Compression - Universal
 
-NOTE 1: This script could take some time depending on your machine. Reason 1 being that this is a shell script and though PowerShell has come a long way it can't compare to a compiled binary (in C/C++ for example). Reason 2 being you are parsing hundreds of thousands (more or less) of URLS! If you weren't then you wouldn't need this script. This newer *universal* script has been refactored has a slight performance in increase from the original *Steven Black* version.
+NOTE 1: This script could take some time depending on your machine. Reason 1 being that this is a shell script and though PowerShell has come a long way it can't compare to a compiled binary (in C/C++ for example). Reason 2 being you are parsing hundreds of thousands (more or less) of URLS! If you weren't then you wouldn't need this script. This newer *universal* script has been refactored and has a slight performance in increase from the original *Steven Black* version.
 
 NOTE 2: You can use this script to compress the default hosts file or any other hosts file by using the `-InputFile` argument switch; For example:
 
@@ -230,7 +229,7 @@ NOTES
         Version 1.0.0 - Added Get-Help comments
 
         ╔═══════════════════════════════════════════════════════════╗
-        ║ Universal hosts file comression script for Windows        ║
+        ║ Universal hosts file compression script for Windows       ║
         ║ © 2023 Ian Pride - New Pride Software/Services            ║
         ║ https://github.com/Lateralus138/hosts-compression-scripts ║
         ╚═══════════════════════════════════════════════════════════╝
@@ -243,7 +242,7 @@ RELATED LINKS
 
 ```
 
-This assumes you have already installed a custom hosts file from Mr. Black's repository and it is located in the appropriate directory as stated above.
+This assumes you have already installed a custom hosts file and it is located in the appropriate directory as stated above.
 
 1. Download ```compress_hosts.ps1``` from the current [Releases Page](https://github.com/Lateralus138/hosts-compression-scripts/releases) and place it anywhere you like.
 2. Open a PowerShell terminal from the Start Menu, Run (Win+r), or from CMD (powershell or pwsh).
@@ -266,16 +265,23 @@ You can also place the script somewhere in your `%PATH%` and run without the ext
       ```Powershell
        PS> Set-ExecutionPolicy unrestricted
       ```
-5. If you only want to see the compressed results from the command line then (from the directory of the script, unless you want to type the full path) type `.\compress_hosts.ps1` and it will somewhat verbosely run through the process of compression and output the results to the screen.
-```
+5. If you only want to see the compressed result from the command line then (from the directory of the script, unless you want to type the full path) type `.\compress_hosts.ps1` and it will somewhat verbosely run through the process of compression and output the results to the screen:
+```PowerShell
  PS> .\compress_hosts.ps1
 ```
-6. To actually output the compressed results to a file run the same command, but redirect the output to a file: `compress_hosts.ps1 -OutputFile hosts`. I do not recommend overwriting the original file (as this is harder to do and I provide a more reliable method below in [Replacing Windows hosts file](#replacing-windows-hosts-file)).
+or if it's in you `%PATH%`:
+```PowerShell
+ PS> compress_hosts
+```
+6. To actually output the compressed result to a file run the same command, but redirect the output to a file: `compress_hosts.ps1 -OutputFile hosts`. I do not recommend overwriting the original file (as this is harder to do and I provide a more reliable method below in [Replacing Windows hosts file](#replacing-windows-hosts-file)).
 ```
  PS> .\compress_hosts.ps1 -OutputFile host
 ```
-
-You will now have a new compressed version of your hosts file. All of the original content of the file will be there, but reordered. As some of the comments (#[Added]... for example) were mixed in with the original URLS they will now be placed at the bottom and make no sense. The other text (header and footer) in the original file will still be in their appropriate places.
+or if it's in you `%PATH%`:
+```PowerShell
+ PS> compress_hosts -OutputFile host
+ ```
+You will now have a new compressed version of your hosts file. All of the original content of the file will be there, but reordered. As some of the comments (#[Added]... for example) might be mixed in with the original URLS they will now be placed at the bottom and make no sense. The other text (header and footer) in the original file will still be in their appropriate places.
 
 ### Replacing Windows Hosts File
 
