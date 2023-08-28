@@ -61,7 +61,7 @@ Here you will find *scripts* (eventually programs) to help compress the hosts fi
 
  Therefore it's a great idea to compress larges hosts files, especially in Windows and one can do so with scripts found here. My last compression (as of the official release of this project) turned 189k+ hostnames into 21k+ lines and went from an hour plus of no internet after boot to instantaneous internet.
 
- NOTE 1: There's a misconception that the host's file size matters (some people say over 1MB is problematic) and it really doesn't. It's more about the number or URLS per IP line. For example; a file size of 6MB+ compresses down to 5MB and runs exponentially better to near unnoticeable. 
+ NOTE 1: There's a misconception that the hosts file's file size matters (some people say over 1MB is problematic) and it really doesn't. It's more about the number or URLS per IP line. For example; a file size of 6MB+ compresses down to 5MB and runs exponentially better to near unnoticeable. 
 
 ### Motivation
 
@@ -91,7 +91,7 @@ Please bear with me as this is a lot of work and I am a busy man, but in my opin
 
 ## Usage
 
-For now these are all command line tools, whether they be a script or binary executable. No immediate plans for GUIs, but that make eventually change.
+For now these are all command line tools, whether they be a script or binary executable. No immediate plans for GUIs, but that may eventually change.
 
 The main focus for now is Windows and Linux, but as stated in the [Motivation](#motivation) section the whole reason I started this is for the shipwreck that is the Windows environment. I love Windows and Linux, but to deny there are some issues in Windows (in both really, but most notably Windows) is folly.
 
