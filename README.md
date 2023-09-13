@@ -2,7 +2,7 @@
 
 ![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Lateralus138&repo=hosts-compression-scripts)
 
-***NOTE***: **The C++ Widows version of this project is essentially finished and coming very soon!** For now you can keep checking for progress on the workflow at [https://github.com/Lateralus138/hosts-compress-windows](https://github.com/Lateralus138/hosts-compress-windows). This is exponentially faster (as in around 500ms for 220k+ URLs) and has a few extra features. ***COMING SOON***!
+***NOTE***: **The C++ Widows version of this project is finished and highly recommended** over the PowerShell script found here. You can find the project at [https://github.com/Lateralus138/hosts-compress-windows](https://github.com/Lateralus138/hosts-compress-windows). This is exponentially faster (as in around 500ms for 220k+ URLs) and has a few extra features.
 
 ---
 
